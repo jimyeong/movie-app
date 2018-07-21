@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Movie from './Movie';
 import './App.css';
+
 class App extends Component {
     // Render componentWillMount() => render() => componentDidMount()
     // Update componentWillReceiveProps() => shouldComponentUpdate() => componentWillupdate() => render => componentDidUpdate()
@@ -24,6 +25,7 @@ class App extends Component {
                            key={movie.id}
                            genres={movie.genres}
                            synopsis={movie.synopsis}
+
             />
         });
         return movies
@@ -37,13 +39,14 @@ class App extends Component {
 
     };
     _callAPi = () => {
-        return fetch('https://yts.nam/api/v2/list_movies.json?sort_by=rating')
+        return fetch('https://yts.am/api/v2/list_movies.json?sort_by=download_count')
             .then(potato => potato.json())
             .then(json => json.data.movies)
             .catch((err) => {
                 console.log(err)
             })
     }
+
 
   render() {
     return (
